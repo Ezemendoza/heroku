@@ -15,7 +15,7 @@ import  Log4js  from "log4js";
 const LocalStrategy = Strategy;
 
 const app = express();
-app.use(express.static("views"));
+app.use(express.static("public"));
 app.use(compression());
 app.use(express.json());
 app.use(cookieParser());
@@ -79,7 +79,7 @@ passport.deserializeUser(async (id, done) => {
 app.engine(
   ".hbs",
   handlebars.engine({
-    defaultLayout: "login",
+    defaultLayout: "main",
     layoutsDir: path.join(app.get("views")),
     extname: ".hbs",
   })
