@@ -13,7 +13,7 @@ import compression from "compression";
 import  Log4js  from "log4js";
 
 const LocalStrategy = Strategy;
-
+const PORT = process.env.port||'8080';
 const app = express();
 app.use(express.static("public"));
 app.use(compression());
@@ -174,7 +174,7 @@ app.get("/logout",(req,res)=>{
 
         
 
-app.listen(process.env.PORT || 5000)
+app.listen(PORT)
 
 
 
