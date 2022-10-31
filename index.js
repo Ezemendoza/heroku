@@ -131,7 +131,7 @@ app.get("/login", (req,res)=>{
     res.render("login")
 })
 app.get("/", (req,res)=>{
-  res.send(`Servidor funcionando en ${PORT}`)
+  res.send(`Hola`)
 })
 app.post( "/login", passport.authenticate("local", { failureRedirect: "loginerror" }), (req, res) => {
 
