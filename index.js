@@ -80,7 +80,7 @@ passport.deserializeUser(async (id, done) => {
 app.engine(
   ".hbs",
   handlebars.engine({
-    defaultLayout: "login",
+    defaultLayout: "main",
     layoutsDir: path.join(app.get("views")),
     extname: ".hbs",
   })
@@ -128,7 +128,7 @@ loggerArchivo.info(`Error en el login`);
   res.render("loginerror");
 });
 
-app.get("/", (req,res)=>{
+app.get("/login", (req,res)=>{
     res.render("login")
 })
 app.post( "/login", passport.authenticate("local", { failureRedirect: "loginerror" }), (req, res) => {
@@ -150,13 +150,12 @@ app.get("/inicio", auth, async (req,res)=>{
     
 })
 
-app.get("*", (req, res) => {
-  const { url} = req;
-
-const loggerArchivo = Log4js.getLogger("warn");
-  loggerArchivo.warn(`Ruta ${url} inexistente`);
-  res.send(`Ruta ${url} inexistente`);
-});
+// app.get("*", (req, res) => {
+//   const { url} = req;
+// const loggerArchivo = Log4js.getLogger("warn");
+//   loggerArchivo.warn(`Ruta ${url} inexistente`);
+//   res.send(`Ruta ${url} inexistente`);
+// });
 
 
 
