@@ -13,7 +13,7 @@ import compression from "compression";
 import  Log4js  from "log4js";
 
 const LocalStrategy = Strategy;
-const PORT = process.env.port||'8080';
+const PORT = process.env.port|| 8080;
 const app = express();
 app.use(express.static("public"));
 app.use(compression());
@@ -129,6 +129,9 @@ loggerArchivo.info(`Error en el login`);
 
 app.get("/login", (req,res)=>{
     res.render("login")
+})
+app.get("/", (req,res)=>{
+  res.send(`Servidor funcionando en ${PORT}`)
 })
 app.post( "/login", passport.authenticate("local", { failureRedirect: "loginerror" }), (req, res) => {
 
