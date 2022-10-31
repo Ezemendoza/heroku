@@ -13,10 +13,9 @@ import compression from "compression";
 import  Log4js  from "log4js";
 
 const LocalStrategy = Strategy;
+
 const app = express();
-
-
-app.use(express.static("public"));
+app.use(express.static("views"));
 app.use(compression());
 app.use(express.json());
 app.use(cookieParser());
@@ -80,7 +79,7 @@ passport.deserializeUser(async (id, done) => {
 app.engine(
   ".hbs",
   handlebars.engine({
-    defaultLayout: "main",
+    defaultLayout: "login",
     layoutsDir: path.join(app.get("views")),
     extname: ".hbs",
   })
@@ -175,7 +174,7 @@ app.get("/logout",(req,res)=>{
 
         
 
-app.listen(8081)
+app.listen(process.env.PORT || 5000)
 
 
 
