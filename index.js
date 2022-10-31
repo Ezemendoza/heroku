@@ -128,7 +128,7 @@ loggerArchivo.info(`Error en el login`);
   res.render("loginerror");
 });
 
-app.get("/login", (req,res)=>{
+app.get("/", (req,res)=>{
     res.render("login")
 })
 app.post( "/login", passport.authenticate("local", { failureRedirect: "loginerror" }), (req, res) => {
